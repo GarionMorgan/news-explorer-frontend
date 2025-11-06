@@ -3,7 +3,7 @@ function SavedNews() {
     <div className="saved-news">
       <Header />
       <Navigation />
-      <Main savedArticlesOnly={true} />
+      <Main />
       <Footer />
     </div>
   );
