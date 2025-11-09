@@ -2,3 +2,9 @@
   margin: 0;
   width: 1440px;
 }
+
+.main__header {
+  background-image: url(../../assets/georgia-de-lotz--UsJoNxLaNo-unsplash.svg);
+  background-size: cover;
+  background-position: center;
+}

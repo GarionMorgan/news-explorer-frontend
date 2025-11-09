@@ -2,15 +2,17 @@
 @import url("./vendor/fonts.css");
 
 :root {
-  --font-family: "Inter", Arial, sans-serif;
+  --font-family-main: "Inter", Arial, sans-serif;
+  --font-family-secondary: "Roboto Slab", Georgia, serif;
   --font-size: 16px;
   --color-black: #000000;
   --color-white: #ffffff;
   --color-light-gray: #f5f5f5;
   --color-dark-gray: #808080;
   --color-blue: #2f80ed;
+  --color-footer: rgba(182, 188, 191, 1);
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-family-main);
 }

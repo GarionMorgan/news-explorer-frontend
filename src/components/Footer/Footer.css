@@ -1,0 +1,30 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 1440px;
+  height: 80px;
+}
+
+.footer__text {
+  font-family: var(--font-family-secondary);
+  font-size: 14px;
+  color: var(--color-footer);
+}
+
+.footer__links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.footer__links_link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-secondary);
+  font-size: 14px;
+  color: var(--color-footer);
+}

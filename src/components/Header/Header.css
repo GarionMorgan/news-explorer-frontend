@@ -4,4 +4,36 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid var(--color-white);
+}
+
+.header__title {
+  margin: 30px 0 26px 104px;
+  font-family: var(--font-family-secondary);
+  color: var(--color-white);
+}
+
+.header__sign-in-btn {
+  width: 176px;
+  height: 48px;
+  margin-right: 104px;
+  font-family: var(--font-family-secondary);
+  border-radius: 100px;
+  border: 1px solid var(--color-white);
+  background-color: transparent;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.header__navigation {
+  display: flex;
+  gap: 42px;
+}
+
+.header__home-btn {
+  font-family: var(--font-family-secondary);
+  border: none;
+  background-color: transparent;
+  color: var(--color-white);
+  cursor: pointer;
 }
