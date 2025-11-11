@@ -10,6 +10,8 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
+import NotFound from "../NotFound/NotFound";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function Main({
   articles,
@@ -24,6 +26,7 @@ function Main({
   const [activeModal, setActiveModal] = useState(false);
 
   const [visibleCount, setVisibleCount] = useState(3);
+  const [hasSearched, setHasSearched] = useState(false);
 
   // Handlers to open modals
   const handleSignUpClick = () => {
@@ -47,6 +50,12 @@ function Main({
     setActiveModal(false);
   };
 
+  // Handle search with tracking
+  const handleSearch = (searchTerm) => {
+    setHasSearched(true);
+    onSearch(searchTerm);
+  };
+
   // Use custom hook to handle modal close events
   useModalClose(!!activeModal, closeActiveModal);
 
@@ -64,17 +73,17 @@ function Main({
           handleSignInClick={handleSignInClick}
           handleSignUpClick={handleSignUpClick}
         />
-        <SearchForm onSearch={onSearch} />
+        <SearchForm onSearch={handleSearch} />
       </div>
       {isLoading ? (
         <Preloader />
       ) : errorMessage ? (
-        <p className="error">{errorMessage}</p>
+        <ErrorMessage message={errorMessage} />
       ) : articles.length > 0 ? (
         <>
           {visibleArticles.map((article, index) => (
             <NewsCard
-              key={index}
+              key={article.url || index}
               article={article}
               isLoggedIn={isLoggedIn}
               isSaved={savedArticles.includes(article.url)}
@@ -91,6 +100,8 @@ function Main({
             </button>
           )}
         </>
+      ) : hasSearched && articles.length === 0 ? (
+        <NotFound />
       ) : null}
 
       <About />

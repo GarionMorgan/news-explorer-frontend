@@ -1,0 +1,52 @@
+.preloader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1440px;
+  height: 200px;
+  flex-direction: column;
+  background-color: var(--color-preloader-bg);
+}
+
+.preloader__message {
+  font-family: var(--font-family-secondary);
+  font-size: 18px;
+  color: var(--color-dark-gray);
+  text-align: center;
+  margin-top: 110px;
+}
+
+.preloader__spinner {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  background: conic-gradient(
+    from 0deg,
+    var(--color-preloader-spinner-dark) 0deg,
+    var(--color-preloader-spinner-dark) 45deg,
+    rgba(128, 128, 128, 0.8) 90deg,
+    rgba(128, 128, 128, 0.6) 135deg,
+    rgba(128, 128, 128, 0.4) 180deg,
+    rgba(128, 128, 128, 0.2) 225deg,
+    rgba(128, 128, 128, 0.1) 270deg,
+    transparent 315deg,
+    transparent 360deg
+  );
+  mask: radial-gradient(circle, transparent 17px, black 21px);
+  -webkit-mask: radial-gradient(circle, transparent 17px, black 21px);
+  animation: spin 0.75s infinite linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
