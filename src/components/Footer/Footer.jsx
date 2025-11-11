@@ -11,22 +11,41 @@ function Footer() {
         </p>
       </div>
       <div className="footer__links">
-        <button className="footer__links_link">Home</button>
-        <button className="footer__links_link">TripeTen</button>
-        <button className="footer__links_link">
+        <a href="/" className="footer__links_link">
+          Home
+        </a>
+        <a
+          href="https://tripleten.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer__links_link"
+        >
+          TripleTen
+        </a>
+        <a
+          href="https://github.com/GarionMorgan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer__links_link"
+        >
           <img
             src={githubIcon}
             alt="GitHub"
             className="footer__links_link_image"
           />
-        </button>
-        <button className="footer__links_link">
+        </a>
+        <a
+          href="https://www.linkedin.com/in/garion-morgan/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer__links_link"
+        >
           <img
             src={linkedInIcon}
             alt="LinkedIn"
             className="footer__links_link_image"
           />
-        </button>
+        </a>
       </div>
     </footer>
   );

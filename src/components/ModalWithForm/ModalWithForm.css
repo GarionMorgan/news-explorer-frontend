@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  z-index: 9999;
 }
 
 .modal_opened {
@@ -19,10 +20,14 @@
   background-color: #fff;
   position: relative;
   width: 430px;
-  height: 410px;
+  min-height: 410px;
+  max-height: 90vh;
   box-sizing: border-box;
   border-radius: 16px;
   border: 1px;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal__close {
@@ -31,18 +36,19 @@
   right: -35px;
   width: 40px;
   height: 40px;
-  background: none;
   border: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: none;
 }
 
 .modal__close-btn {
   width: 40px;
   height: 40px;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .modal__second-button-container {
@@ -81,6 +87,7 @@
   padding: 0 36px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .modal__label {

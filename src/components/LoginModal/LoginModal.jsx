@@ -1,7 +1,7 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-function LoginModal({ isOpen, onClose, onSubmit }) {
+function LoginModal({ isOpen, onClose, onSubmit, onSignUpClick }) {
   return (
     <ModalWithForm
       title="Sign in"
@@ -10,6 +10,7 @@ function LoginModal({ isOpen, onClose, onSubmit }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={onSubmit}
+      onSecondButtonClick={onSignUpClick}
     >
       <label htmlFor="login-email" className="modal__label">
         Email

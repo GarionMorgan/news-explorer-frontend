@@ -9,6 +9,7 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
+  onSecondButtonClick,
 }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
@@ -30,7 +31,11 @@ function ModalWithForm({
         {secondButtonText && (
           <div className="modal__second-button-container">
             <span className="modal__or-text">or</span>
-            <button className="modal__second-btn" type="button">
+            <button
+              className="modal__second-btn"
+              type="button"
+              onClick={onSecondButtonClick}
+            >
               {secondButtonText}
             </button>
           </div>
