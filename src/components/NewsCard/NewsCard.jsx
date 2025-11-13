@@ -21,6 +21,7 @@ function NewsCard({ article, isLoggedIn, isSaved, onSaveClick }) {
   return (
     <div className="news-card">
       <img src={urlToImage} alt={title} className="news-card__image" />
+
       <div className="news-card__content">
         <p className="news-card__date">{formatDate(publishedAt)}</p>
         <h3 className="news-card__title">{title}</h3>

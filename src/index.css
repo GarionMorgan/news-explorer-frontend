@@ -14,6 +14,7 @@
   --color-preloader-bg: rgba(245, 246, 247, 1);
   --color-preloader-spinner-dark: rgba(26, 27, 34, 1);
   --color-preloader-spinner-light: rgba(209, 210, 214, 1);
+  --color-show-more-hover-bg: #e8e8e8;
 }
 
 body {

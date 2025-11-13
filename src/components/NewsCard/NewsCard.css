@@ -1,0 +1,77 @@
+.news-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 576px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  text-align: left;
+}
+
+.news-card__image {
+  width: 100%;
+  height: 240px;
+  background-color: #ccc;
+  background-size: cover;
+  background-position: center;
+}
+
+.news-card__content {
+  margin-left: 24px;
+  margin-right: 15px;
+}
+
+.news-card__date {
+  font-size: 18px;
+}
+
+.news-card__title {
+  font-size: 26px;
+}
+
+.news-card__description {
+  font-size: 16px;
+}
+
+.news-card__source {
+  font-size: 16px;
+  color: var(--color-dark-gray);
+  position: absolute;
+  bottom: 10px;
+  left: 24px;
+  margin: 0;
+}
+
+.news-card__save-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-white);
+  background-image: url(../../assets/save_icon_normal.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-card__save-icon:hover {
+  background-image: url(../../assets/save_icon_hover.svg);
+}
+
+.news-card__save-icon.active {
+  opacity: 1;
+}
+
+.news-card__save-icon.saved {
+  background-image: url(../../assets/save_icon_saved.svg);
+}

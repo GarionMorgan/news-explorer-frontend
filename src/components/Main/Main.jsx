@@ -81,24 +81,28 @@ function Main({
         <ErrorMessage message={errorMessage} />
       ) : articles.length > 0 ? (
         <>
-          {visibleArticles.map((article, index) => (
-            <NewsCard
-              key={article.url || index}
-              article={article}
-              isLoggedIn={isLoggedIn}
-              isSaved={savedArticles.includes(article.url)}
-              onSaveClick={handleSaveClick}
-            />
-          ))}
-
-          {visibleCount < articles.length && (
-            <button
-              className="main__load-more-btn"
-              onClick={() => setVisibleCount(visibleCount + 3)}
-            >
-              Show more
-            </button>
-          )}
+          <div className="main__news-cards_content">
+            <div className="main__news-cards-title">Search results</div>
+            <div className="main__news-cards">
+              {visibleArticles.map((article, index) => (
+                <NewsCard
+                  key={article.url || index}
+                  article={article}
+                  isLoggedIn={isLoggedIn}
+                  isSaved={savedArticles.includes(article.url)}
+                  onSaveClick={handleSaveClick}
+                />
+              ))}
+            </div>
+            {visibleCount < articles.length && (
+              <button
+                className="main__load-more-btn"
+                onClick={() => setVisibleCount(visibleCount + 3)}
+              >
+                Show more
+              </button>
+            )}
+          </div>
         </>
       ) : hasSearched && articles.length === 0 ? (
         <NotFound />
