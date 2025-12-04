@@ -4,7 +4,12 @@ import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import "./App.css";
 const apiKey = import.meta.env.VITE_NEWS_API_KEY;
-import newsApiBaseUrl from "../../utils/api";
+import newsApiBaseUrl, {
+  saveArticle,
+  unsaveArticle,
+  isArticleSaved,
+  getSavedArticles,
+} from "../../utils/api";
 
 function App() {
   // State for managing search form
@@ -12,6 +17,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
+  const [savedArticlesData, setSavedArticlesData] = useState([]); // Full saved articles data
+  const [currentUser, setCurrentUser] = useState(null);
+  const [currentKeyword, setCurrentKeyword] = useState(""); // Store current search keyword
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -20,6 +28,7 @@ function App() {
     setErrorMessage("");
     setArticles([]);
     setIsLoading(true);
+    setCurrentKeyword(keyword); // Store the search keyword
     const today = new Date();
     const sevenDaysAgo = new Date(today);
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
@@ -47,14 +56,77 @@ function App() {
     }
   };
 
-  // handle save clicks
-  const handleSaveClick = (article) => {
-    const articleUrl = article.url;
-    if (savedArticles.includes(articleUrl)) {
-      setSavedArticles(savedArticles.filter((url) => url !== articleUrl));
-    } else {
-      setSavedArticles([...savedArticles, articleUrl]);
+  // handle save clicks with API integration
+  const handleSaveClick = async (article) => {
+    if (!isLoggedIn) {
+      console.log("User must be logged in to save articles");
+      return;
     }
+
+    const articleUrl = article.url;
+    const isCurrentlySaved = isArticleSaved(articleUrl);
+
+    if (isCurrentlySaved) {
+      // Unsave the article
+      const result = await unsaveArticle(articleUrl);
+      if (result.success) {
+        // Update local state - remove from saved articles
+        setSavedArticles((prev) => prev.filter((url) => url !== articleUrl));
+        // Reload saved articles data to keep it in sync
+        await loadSavedArticles();
+        console.log("Article unsaved successfully");
+      } else {
+        console.error("Failed to unsave article:", result.error);
+      }
+    } else {
+      // Save the article
+      const articleData = {
+        ...article,
+        keyword: currentKeyword, // Include the search keyword
+      };
+
+      const result = await saveArticle(articleData);
+      if (result.success) {
+        // Update local state - add to saved articles
+        setSavedArticles((prev) => [...prev, articleUrl]);
+        // Reload saved articles data to keep it in sync
+        await loadSavedArticles();
+        console.log("Article saved successfully");
+      } else {
+        console.error("Failed to save article:", result.error);
+      }
+    }
+  };
+
+  // Load saved articles for current user
+  const loadSavedArticles = async () => {
+    const result = await getSavedArticles();
+    if (result.success) {
+      // Store full saved articles data
+      setSavedArticlesData(result.data);
+      // Extract URLs from saved articles for compatibility with existing UI
+      const savedUrls = result.data.map((article) => article.url);
+      setSavedArticles(savedUrls);
+    } else {
+      console.error("Failed to load saved articles:", result.error);
+    }
+  };
+
+  // Handle successful sign in
+  const handleSignIn = async (userData) => {
+    console.log("App handleSignIn received userData:", userData); // Debug log
+    setIsLoggedIn(true);
+    setCurrentUser(userData);
+    // Load saved articles for this user
+    await loadSavedArticles();
+  };
+
+  // Handle sign out
+  const handleSignOut = () => {
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+    setSavedArticles([]); // Clear saved articles on sign out
+    setSavedArticlesData([]); // Clear saved articles data on sign out
   };
 
   return (
@@ -71,10 +143,26 @@ function App() {
               isLoggedIn={isLoggedIn}
               savedArticles={savedArticles}
               handleSaveClick={handleSaveClick}
+              currentUser={currentUser}
+              currentKeyword={currentKeyword}
+              onSignIn={handleSignIn}
+              onSignOut={handleSignOut}
             />
           }
         />
-        <Route path="/saved-news" element={<SavedNews />} />
+        <Route
+          path="/saved-news"
+          element={
+            <SavedNews
+              isLoggedIn={isLoggedIn}
+              currentUser={currentUser}
+              savedArticles={savedArticles}
+              savedArticlesData={savedArticlesData}
+              handleSaveClick={handleSaveClick}
+              onSignOut={handleSignOut}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

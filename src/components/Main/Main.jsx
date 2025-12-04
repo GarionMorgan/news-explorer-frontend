@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
 import { useModalClose } from "../../hooks/useModalClose";
+import {
+  signUp,
+  signIn,
+  signOut,
+  saveArticle,
+  unsaveArticle,
+  isArticleSaved,
+} from "../../utils/api";
 import "./Main.css";
 import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
@@ -8,6 +16,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import SuccessModal from "../SuccessModal/SuccessModal";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 import NotFound from "../NotFound/NotFound";
@@ -21,9 +30,15 @@ function Main({
   isLoggedIn,
   savedArticles,
   handleSaveClick,
+  currentUser,
+  currentKeyword,
+  onSignIn,
+  onSignOut,
 }) {
   // State for managing active modals
   const [activeModal, setActiveModal] = useState(false);
+  const [registeredUserCredentials, setRegisteredUserCredentials] =
+    useState(null);
 
   const [visibleCount, setVisibleCount] = useState(3);
   const [hasSearched, setHasSearched] = useState(false);
@@ -48,12 +63,71 @@ function Main({
 
   const closeActiveModal = () => {
     setActiveModal(false);
+    // Clear stored credentials when closing modal
+    setRegisteredUserCredentials(null);
   };
 
   // Handle search with tracking
   const handleSearch = (searchTerm) => {
     setHasSearched(true);
     onSearch(searchTerm);
+  };
+
+  // Handle user registration
+  const handleSignUp = async (userData) => {
+    const result = await signUp(userData);
+    if (result.success) {
+      // Store credentials for auto-login
+      setRegisteredUserCredentials({
+        email: userData.email,
+        password: userData.password,
+      });
+      // Show success modal
+      setActiveModal("success");
+    } else {
+      // Handle registration error (show error message)
+      console.error("Registration failed:", result.error);
+    }
+  };
+
+  // Handle user sign in
+  const handleSignIn = async (credentials) => {
+    const result = await signIn(credentials);
+    if (result.success) {
+      closeActiveModal();
+      // Update app state with user data
+      onSignIn(result.data);
+    } else {
+      // Handle sign in error (show error message)
+      console.error("Sign in failed:", result.error);
+    }
+  };
+
+  // Handle user sign out
+  const handleSignOut = async () => {
+    const result = await signOut();
+    if (result.success) {
+      // Call parent component's sign out handler
+      onSignOut();
+    } else {
+      console.error("Sign out failed:", result.error);
+    }
+  };
+
+  // Handle auto sign-in from success modal
+  const handleAutoSignIn = async () => {
+    if (registeredUserCredentials) {
+      const result = await signIn(registeredUserCredentials);
+      if (result.success) {
+        closeActiveModal();
+        // Update app state with user data
+        onSignIn(result.data);
+        // Clear stored credentials
+        setRegisteredUserCredentials(null);
+      } else {
+        console.error("Auto sign-in failed:", result.error);
+      }
+    }
   };
 
   // Use custom hook to handle modal close events
@@ -72,6 +146,9 @@ function Main({
         <Header
           handleSignInClick={handleSignInClick}
           handleSignUpClick={handleSignUpClick}
+          isLoggedIn={isLoggedIn}
+          currentUser={currentUser}
+          onSignOut={handleSignOut}
         />
         <SearchForm onSearch={handleSearch} />
       </div>
@@ -114,11 +191,18 @@ function Main({
         isOpen={activeModal === "signin"}
         onClose={closeActiveModal}
         onSignUpClick={handleSwitchToSignUp}
+        onSubmit={handleSignIn}
       />
       <RegisterModal
         isOpen={activeModal === "signup"}
         onClose={closeActiveModal}
         onSignInClick={handleSwitchToSignIn}
+        onSubmit={handleSignUp}
+      />
+      <SuccessModal
+        isOpen={activeModal === "success"}
+        onClose={closeActiveModal}
+        onSignInClick={handleAutoSignIn}
       />
     </div>
   );

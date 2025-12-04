@@ -11,6 +11,13 @@ function ModalWithForm({
   onSubmit,
   onSecondButtonClick,
 }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    onSubmit(data);
+  };
+
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content">
@@ -22,7 +29,7 @@ function ModalWithForm({
           />
         </button>
         <h2 className="modal__title">{title}</h2>
-        <form className="modal__form" onSubmit={onSubmit}>
+        <form className="modal__form" onSubmit={handleSubmit}>
           {children}
           <button className="modal__submit-btn" type="submit">
             {buttonText}

@@ -1,0 +1,129 @@
+.saved-news {
+  margin: 0;
+  width: 1440px;
+}
+
+.saved-news__header {
+  background-color: white;
+  min-height: 80px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Override header text colors for saved-news page */
+.saved-news__header .header__title {
+  color: #000;
+}
+
+.saved-news__header .navigation__link {
+  color: #000;
+}
+
+.saved-news__header .navigation__sign-in-btn {
+  color: #000;
+  border-color: #000;
+}
+
+.saved-news__header .navigation__user-btn {
+  color: #000;
+  border-color: #000;
+}
+
+/* Update active state underlines to be black on white background */
+.saved-news__header .navigation__home-btn.active::after {
+  background-color: #000;
+}
+
+.saved-news__header .navigation__saved-articles-btn.active::after {
+  background-color: #000;
+}
+
+/* Saved articles cards section */
+.saved-news__cards-content {
+  padding: 40px 0 60px 0;
+  background-color: #f5f6f7;
+}
+
+.saved-news__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+  padding: 0 104px 40px 104px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.saved-news__load-more-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 288px;
+  height: 64px;
+  font-weight: 500;
+}
+
+.saved-news__load-more-btn:hover {
+  background-color: var(--color-show-more-hover-bg);
+}
+
+@media screen and (max-width: 768px) {
+  .saved-news {
+    width: 100%;
+    max-width: 768px;
+  }
+
+  .saved-news__header {
+    min-height: 66px;
+  }
+
+  .saved-news__cards-content {
+    padding: 32px 0 40px 0;
+  }
+
+  .saved-news__cards {
+    gap: 8px;
+    padding: 0 16px 32px 16px;
+    justify-content: center;
+  }
+
+  .saved-news__load-more-btn {
+    width: 240px;
+    height: 56px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .saved-news {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .saved-news__header {
+    min-height: 56px;
+  }
+
+  .saved-news__cards-content {
+    padding: 24px 0 32px 0;
+  }
+
+  .saved-news__cards {
+    gap: 10px;
+    padding: 0 16px 24px 16px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .saved-news__load-more-btn {
+    width: 288px;
+    height: 56px;
+    font-size: 18px;
+  }
+}

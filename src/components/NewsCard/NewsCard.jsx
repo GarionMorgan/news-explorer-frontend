@@ -1,6 +1,11 @@
 import "./NewsCard.css";
+import SaveIconNormal from "../../assets/save_icon_normal.svg";
+import SaveIconMarked from "../../assets/save_icon_marked.svg";
+import SaveIconHover from "../../assets/save_icon_hover.svg";
+import { useState } from "react";
 
 function NewsCard({ article, isLoggedIn, isSaved, onSaveClick }) {
+  const [isHovering, setIsHovering] = useState(false);
   const {
     source = {},
     title = "",
@@ -28,11 +33,21 @@ function NewsCard({ article, isLoggedIn, isSaved, onSaveClick }) {
         <p className="news-card__description">{description}</p>
         <p className="news-card__source">{source.name}</p>
       </div>
-      <div
+      <img
+        src={
+          isSaved
+            ? SaveIconMarked
+            : isLoggedIn && isHovering
+            ? SaveIconHover
+            : SaveIconNormal
+        }
+        alt={isSaved ? "Saved article" : "Save article"}
         className={`news-card__save-icon ${
           isLoggedIn ? "active" : "inactive"
         } ${isSaved ? "saved" : ""}`}
         onClick={() => isLoggedIn && onSaveClick(article)}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
         title={
           !isLoggedIn
             ? "Sign in to save articles"
@@ -40,7 +55,7 @@ function NewsCard({ article, isLoggedIn, isSaved, onSaveClick }) {
             ? "Unsave article"
             : "Save article"
         }
-      ></div>
+      />
     </div>
   );
 }

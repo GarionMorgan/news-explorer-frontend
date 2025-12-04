@@ -38,7 +38,7 @@ function RegisterModal({ isOpen, onClose, onSubmit, onSignInClick }) {
       </label>
       <input
         type="text"
-        name="Username"
+        name="name"
         id="register-name"
         placeholder="Enter your Username"
         className="modal__input"
