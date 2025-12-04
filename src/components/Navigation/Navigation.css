@@ -168,7 +168,7 @@
 
   .navigation--mobile .navigation__link {
     font-size: 18px;
-    color: var(--color-white);
+    color: var(--color-white) !important;
     font-weight: 500;
   }
 
@@ -195,7 +195,12 @@
     gap: 12px;
     padding: 0 16px;
     margin: 24px 0 0 0;
-    border-color: var(--color-white);
-    color: var(--color-white);
+    border: 1px solid var(--color-white) !important;
+    color: var(--color-white) !important;
+  }
+
+  .navigation--mobile .navigation__user-btn_image--white,
+  .navigation--mobile .navigation__user-btn_image {
+    filter: brightness(0) invert(1);
   }
 }

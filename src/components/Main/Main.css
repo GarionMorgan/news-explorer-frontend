@@ -14,8 +14,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  justify-content: space-evenly;
-  padding: 0 20px 40px 20px;
+  justify-content: center;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .main__load-more-btn {
@@ -54,13 +55,13 @@
 @media screen and (max-width: 768px) {
   .main {
     width: 100%;
-    max-width: 768px;
+    max-width: 100%;
   }
 
   .main__news-cards {
-    gap: 8px;
-    padding: 0 16px 32px 16px;
-    justify-content: flex-start;
+    gap: 16px;
+    padding: 0 0 32px 0;
+    justify-content: center;
   }
 
   .main__news-cards-title {
@@ -84,7 +85,7 @@
 @media screen and (max-width: 320px) {
   .main {
     width: 100%;
-    max-width: 320px;
+    max-width: 100%;
   }
 
   .main__news-cards {
