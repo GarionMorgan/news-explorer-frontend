@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import "./App.css";
-const apiKey = import.meta.env.VITE_NEWS_API_KEY;
+const apiKey =
+  import.meta.env.VITE_NEWS_API_KEY || "ad69aa0a68f840e1ac10e575ee31bb71";
 import newsApiBaseUrl, {
   saveArticle,
   unsaveArticle,
