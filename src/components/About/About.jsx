@@ -2,7 +2,7 @@ import "./About.css";
 
 function About() {
   return (
-    <div className="about">
+    <section className="about">
       <div className="about__author_image"></div>
       <div className="about__author_info">
         <h2 className="about__header">About the author</h2>
@@ -25,7 +25,7 @@ function About() {
           solve real-world problems with clarity, reliability, and impact.
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 export default About;

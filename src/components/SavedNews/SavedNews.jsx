@@ -23,7 +23,7 @@ function SavedNews({
   );
 
   return (
-    <div className="saved-news">
+    <main className="saved-news">
       <div className="saved-news__header">
         <Header
           isHomePage={false}
@@ -39,7 +39,7 @@ function SavedNews({
       />
 
       {savedArticlesData.length > 0 && (
-        <div className="saved-news__cards-content">
+        <section className="saved-news__cards-content">
           <div className="saved-news__cards">
             {validSavedArticles.map((article, index) => (
               <NewsCard
@@ -48,14 +48,15 @@ function SavedNews({
                 isLoggedIn={isLoggedIn}
                 isSaved={true} // All saved articles are saved by definition
                 onSaveClick={handleSaveClick}
+                showTrash={true}
               />
             ))}
           </div>
-        </div>
+        </section>
       )}
 
       <Footer />
-    </div>
+    </main>
   );
 }
 export default SavedNews;

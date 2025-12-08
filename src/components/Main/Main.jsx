@@ -141,7 +141,7 @@ function Main({
   const visibleArticles = validArticles.slice(0, visibleCount);
 
   return (
-    <div className="main">
+    <main className="main">
       <div className="main__header">
         <Header
           handleSignInClick={handleSignInClick}
@@ -158,8 +158,8 @@ function Main({
         <ErrorMessage message={errorMessage} />
       ) : articles.length > 0 ? (
         <>
-          <div className="main__news-cards_content">
-            <div className="main__news-cards-title">Search results</div>
+          <section className="main__news-cards_content">
+            <h2 className="main__news-cards-title">Search results</h2>
             <div className="main__news-cards">
               {visibleArticles.map((article, index) => (
                 <NewsCard
@@ -168,6 +168,7 @@ function Main({
                   isLoggedIn={isLoggedIn}
                   isSaved={savedArticles.includes(article.url)}
                   onSaveClick={handleSaveClick}
+                  onSignInClick={handleSignInClick}
                 />
               ))}
             </div>
@@ -179,7 +180,7 @@ function Main({
                 Show more
               </button>
             )}
-          </div>
+          </section>
         </>
       ) : hasSearched && articles.length === 0 ? (
         <NotFound />
@@ -204,7 +205,7 @@ function Main({
         onClose={closeActiveModal}
         onSignInClick={handleAutoSignIn}
       />
-    </div>
+    </main>
   );
 }
 

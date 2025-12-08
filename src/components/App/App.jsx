@@ -131,7 +131,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter basename="/news-explorer-frontend">
+    <BrowserRouter>
       <Routes>
         <Route
           path="/"

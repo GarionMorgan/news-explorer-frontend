@@ -6,13 +6,11 @@ const newsApiBaseUrl =
 // Mock data storage (in real app, this would be handled by backend)
 let mockUsers = [];
 let currentUser = null;
-let savedArticles = []; // Mock storage for saved articles
+let savedArticles = [];
 
 // Authentication API functions (with mock implementation for development)
 export const signUp = async (userData) => {
   try {
-    console.log("SignUp received userData:", userData); // Debug log
-
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -36,15 +34,17 @@ export const signUp = async (userData) => {
     return { success: true, data: newUser };
   } catch (error) {
     console.error("Registration error:", error);
-    return { success: false, error: "Network error occurred" };
+    return {
+      success: false,
+      error: error.message || "Network error occurred during registration",
+    };
+  } finally {
+    console.log("Registration request completed");
   }
 };
 
 export const signIn = async (credentials) => {
   try {
-    console.log("SignIn received credentials:", credentials); // Debug log
-    console.log("Available mock users:", mockUsers); // Debug log
-
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -71,7 +71,12 @@ export const signIn = async (credentials) => {
     }
   } catch (error) {
     console.error("Sign in error:", error);
-    return { success: false, error: "Network error occurred" };
+    return {
+      success: false,
+      error: error.message || "Network error occurred during sign in",
+    };
+  } finally {
+    console.log("Sign in request completed");
   }
 };
 
@@ -86,7 +91,12 @@ export const signOut = async () => {
     return { success: true };
   } catch (error) {
     console.error("Sign out error:", error);
-    return { success: false, error: "Network error occurred" };
+    return {
+      success: false,
+      error: error.message || "Network error occurred during sign out",
+    };
+  } finally {
+    console.log("Sign out request completed");
   }
 };
 
@@ -136,7 +146,12 @@ export const saveArticle = async (articleData) => {
     return { success: true, data: savedArticle };
   } catch (error) {
     console.error("Save article error:", error);
-    return { success: false, error: "Failed to save article" };
+    return {
+      success: false,
+      error: error.message || "Failed to save article",
+    };
+  } finally {
+    console.log("Save article request completed");
   }
 };
 
@@ -163,7 +178,12 @@ export const unsaveArticle = async (articleUrl) => {
     return { success: true, data: removedArticle };
   } catch (error) {
     console.error("Unsave article error:", error);
-    return { success: false, error: "Failed to unsave article" };
+    return {
+      success: false,
+      error: error.message || "Failed to unsave article",
+    };
+  } finally {
+    console.log("Unsave article request completed");
   }
 };
 
@@ -185,7 +205,12 @@ export const getSavedArticles = async () => {
     return { success: true, data: userSavedArticles };
   } catch (error) {
     console.error("Get saved articles error:", error);
-    return { success: false, error: "Failed to retrieve saved articles" };
+    return {
+      success: false,
+      error: error.message || "Failed to retrieve saved articles",
+    };
+  } finally {
+    console.log("Get saved articles request completed");
   }
 };
 

@@ -62,7 +62,7 @@ function Header({
           <div className="mobile-menu-overlay" onClick={closeMobileMenu}></div>
           <div className="mobile-menu">
             <div className="mobile-menu__header">
-              <div className="mobile-menu__title">NewsExplorer</div>
+              <div className="mobile-menu__title">News Explorer</div>
               <button
                 className="mobile-menu__close"
                 onClick={closeMobileMenu}

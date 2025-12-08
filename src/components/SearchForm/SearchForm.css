@@ -69,12 +69,31 @@
   height: 100%;
   border-radius: 100px;
   color: var(--color-white);
-  background-color: var(--color-blue);
+  background-color: #2f71e5;
   border: none;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
   z-index: 1;
+  transition: background-color 0.2s ease;
+}
+
+.searchForm__button:hover {
+  background-color: #347eff;
+}
+
+.searchForm__button:active {
+  background-color: #2a65cc;
+}
+
+.searchForm__error {
+  color: var(--color-white);
+  font-family: var(--font-family-secondary);
+  font-size: 14px;
+  position: absolute;
+  bottom: -20px;
+  left: 24px;
+  margin: 0;
 }
 
 @media screen and (max-width: 768px) {

@@ -2,9 +2,18 @@ import "./NewsCard.css";
 import SaveIconNormal from "../../assets/save_icon_normal.svg";
 import SaveIconMarked from "../../assets/save_icon_marked.svg";
 import SaveIconHover from "../../assets/save_icon_hover.svg";
+import TrashIcon from "../../assets/trash.svg";
+import TrashIconHover from "../../assets/trash_hover.svg";
 import { useState } from "react";
 
-function NewsCard({ article, isLoggedIn, isSaved, onSaveClick }) {
+function NewsCard({
+  article,
+  isLoggedIn,
+  isSaved,
+  onSaveClick,
+  onSignInClick,
+  showTrash = false,
+}) {
   const [isHovering, setIsHovering] = useState(false);
   const {
     source = {},
@@ -24,7 +33,7 @@ function NewsCard({ article, isLoggedIn, isSaved, onSaveClick }) {
   };
 
   return (
-    <div className="news-card">
+    <article className="news-card">
       <img src={urlToImage} alt={title} className="news-card__image" />
 
       <div className="news-card__content">
@@ -35,28 +44,42 @@ function NewsCard({ article, isLoggedIn, isSaved, onSaveClick }) {
       </div>
       <img
         src={
-          isSaved
+          showTrash
+            ? isHovering
+              ? TrashIconHover
+              : TrashIcon
+            : isSaved
             ? SaveIconMarked
             : isLoggedIn && isHovering
             ? SaveIconHover
             : SaveIconNormal
         }
-        alt={isSaved ? "Saved article" : "Save article"}
+        alt={
+          showTrash
+            ? "Remove article"
+            : isSaved
+            ? "Saved article"
+            : "Save article"
+        }
         className={`news-card__save-icon ${
           isLoggedIn ? "active" : "inactive"
         } ${isSaved ? "saved" : ""}`}
-        onClick={() => isLoggedIn && onSaveClick(article)}
+        onClick={() =>
+          isLoggedIn ? onSaveClick(article) : onSignInClick && onSignInClick()
+        }
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         title={
-          !isLoggedIn
+          showTrash
+            ? "Remove article"
+            : !isLoggedIn
             ? "Sign in to save articles"
             : isSaved
             ? "Unsave article"
             : "Save article"
         }
       />
-    </div>
+    </article>
   );
 }
 
