@@ -1,16 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useModalClose } from "../../hooks/useModalClose";
-import {
-  signUp,
-  signIn,
-  signOut,
-  saveArticle,
-  unsaveArticle,
-  isArticleSaved,
-} from "../../utils/api";
+import { signUp, signIn, signOut } from "../../utils/api";
 import "./Main.css";
 import Header from "../Header/Header";
-import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
@@ -31,7 +23,6 @@ function Main({
   savedArticles,
   handleSaveClick,
   currentUser,
-  currentKeyword,
   onSignIn,
   onSignOut,
 }) {

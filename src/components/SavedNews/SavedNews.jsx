@@ -7,7 +7,6 @@ import "./SavedNews.css";
 function SavedNews({
   isLoggedIn,
   currentUser,
-  savedArticles,
   savedArticlesData,
   handleSaveClick,
   onSignOut,

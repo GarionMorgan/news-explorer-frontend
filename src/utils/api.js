@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 const newsApiBaseUrl =
   process.env.NODE_ENV === "production"
     ? "https://nomoreparties.co/news/v2/everything"
     : "https://newsapi.org/v2/everything";
+/* eslint-enable no-undef */
 
 // Mock data storage (in real app, this would be handled by backend)
 let mockUsers = [];

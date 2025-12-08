@@ -6,14 +6,7 @@ import HamburgerMenu from "../../assets/hamburger_menu.svg";
 import HamburgerMenuBlack from "../../assets/hamburger_menu_black.svg";
 import CloseIcon from "../../assets/close_icon.svg";
 
-function Header({
-  handleSignInClick,
-  handleSignUpClick,
-  isHomePage = true,
-  isLoggedIn,
-  currentUser,
-  onSignOut,
-}) {
+function Header({ handleSignInClick, isLoggedIn, currentUser, onSignOut }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isOnSavedPage = location.pathname === "/saved-news";
