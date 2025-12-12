@@ -5,17 +5,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--color-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-sizing: border-box;
   padding: 0 104px;
 }
 
 .header__title {
-  margin: 30px 0 26px 0;
+  margin: 0;
   font-family: var(--font-family-secondary);
   color: var(--color-white);
   font-size: 20px;
   font-weight: 700;
+  line-height: 24px;
 }
 
 .header__sign-in-btn {
@@ -44,7 +45,7 @@
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1160px) {
   .header {
     width: 100%;
     max-width: 100%;
@@ -70,7 +71,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .header {
     width: 100%;
     max-width: 100%;

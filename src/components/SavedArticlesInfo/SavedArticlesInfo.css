@@ -45,7 +45,7 @@
   font-weight: 600;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1160px) {
   .saved-articles-info {
     padding: 32px 0;
   }
@@ -76,7 +76,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .saved-articles-info {
     padding: 32px 0;
   }

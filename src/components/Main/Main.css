@@ -1,6 +1,9 @@
 .main {
   margin: 0;
-  width: 1440px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .main__header {
@@ -52,7 +55,7 @@
   margin: 0px 624px 64px 63px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1160px) {
   .main {
     width: 100%;
     max-width: 100%;
@@ -82,7 +85,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .main {
     width: 100%;
     max-width: 100%;

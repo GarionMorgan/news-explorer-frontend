@@ -73,7 +73,7 @@
   background-color: var(--color-show-more-hover-bg);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1160px) {
   .saved-news {
     width: 100%;
     max-width: 100%;
@@ -100,7 +100,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .saved-news {
     width: 100%;
     max-width: 100%;

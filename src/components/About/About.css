@@ -49,7 +49,7 @@
   white-space: normal;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1160px) {
   .about {
     width: 100%;
     max-width: 100%;
@@ -87,7 +87,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .about {
     width: 100%;
     max-width: 100%;

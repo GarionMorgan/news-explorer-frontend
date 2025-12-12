@@ -1,5 +1,5 @@
 .searchForm {
-  width: 1440px;
+  width: 100%;
   max-width: 100%;
   height: 496px;
   display: flex;
@@ -8,6 +8,7 @@
   align-items: center;
   margin: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .searchForm__header {
@@ -96,7 +97,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1160px) {
   .searchForm {
     width: 100%;
     max-width: 100%;
@@ -143,7 +144,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .searchForm {
     width: 100%;
     max-width: 100%;

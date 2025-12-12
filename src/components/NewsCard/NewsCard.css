@@ -76,7 +76,7 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1160px) {
   .news-card {
     width: calc((100% - 32px) / 3);
     max-width: none;
@@ -134,7 +134,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 550px) {
   .news-card {
     width: 100%;
     max-width: 288px;
