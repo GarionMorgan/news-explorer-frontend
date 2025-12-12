@@ -29,6 +29,12 @@
   font-family: var(--font-family-secondary);
   font-size: 14px;
   color: var(--color-footer);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer__links_link:hover {
+  opacity: 0.6;
 }
 
 .footer__links-text {
