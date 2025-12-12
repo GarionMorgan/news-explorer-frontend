@@ -15,12 +15,14 @@ function NewsCard({
   showTrash = false,
 }) {
   const [isHovering, setIsHovering] = useState(false);
+  const [isCardHovering, setIsCardHovering] = useState(false);
   const {
     source = {},
     title = "",
     publishedAt = "",
     description = "",
     urlToImage = "",
+    url = "",
   } = article;
 
   const formatDate = (dateString) => {
@@ -32,8 +34,24 @@ function NewsCard({
     });
   };
 
+  const handleCardClick = (e) => {
+    // Don't navigate if clicking on the save/trash icon
+    if (e.target.closest(".news-card__save-icon")) {
+      return;
+    }
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
-    <article className="news-card">
+    <article
+      className={`news-card ${isCardHovering ? "news-card--hover" : ""}`}
+      onClick={handleCardClick}
+      onMouseEnter={() => setIsCardHovering(true)}
+      onMouseLeave={() => setIsCardHovering(false)}
+      style={{ cursor: "pointer" }}
+    >
       <img src={urlToImage} alt={title} className="news-card__image" />
 
       <div className="news-card__content">
