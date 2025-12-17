@@ -1,0 +1,23 @@
+.error-message {
+  width: 1440px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-light-gray);
+}
+
+.error-message__icon {
+  width: 100px;
+  height: 100px;
+  background-image: url(../../assets/not-found_image.svg);
+  background-repeat: no-repeat;
+  margin-right: 20px;
+}
+
+.error-message__text {
+  font-family: var(--font-family-main);
+  font-size: 18px;
+  color: var(--color-dark-gray);
+}

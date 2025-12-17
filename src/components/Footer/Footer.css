@@ -1,0 +1,142 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 104px;
+  width: 1440px;
+  max-width: 100%;
+  height: 80px;
+  box-sizing: border-box;
+}
+
+.footer__text {
+  font-family: var(--font-family-secondary);
+  font-size: 14px;
+  color: var(--color-footer);
+}
+
+.footer__links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.footer__links_link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-secondary);
+  font-size: 14px;
+  color: var(--color-footer);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer__links_link:hover {
+  opacity: 0.6;
+}
+
+.footer__links-text {
+  gap: 20px;
+  display: flex;
+}
+
+.footer__links-icons {
+  gap: 20px;
+  display: flex;
+}
+
+@media screen and (max-width: 1160px) {
+  .footer {
+    width: 100%;
+    max-width: 100%;
+    height: 56px;
+    padding: 20px 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer__text {
+    font-size: 14px;
+  }
+
+  .footer__links {
+    gap: 24px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .footer__links_link {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .footer {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 32px 16px 24px 16px;
+    flex-direction: column;
+    gap: 28px;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .footer__api_info {
+    order: 2;
+    width: 100%;
+  }
+
+  .footer__text {
+    font-size: 16px;
+    color: var(--color-footer);
+    margin: 0;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    order: 1;
+    width: 100%;
+  }
+
+  .footer__links-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .footer__links-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .footer__links_link {
+    font-size: 18px;
+    color: var(--color-footer);
+    text-decoration: none;
+    padding: 4px 0;
+    text-align: left;
+  }
+
+  .footer__links_link_image {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  .footer__links-text .footer__links_link {
+    margin-bottom: 20px;
+  }
+
+  .footer__links-text .footer__links_link:last-child {
+    margin-bottom: 0;
+  }
+}
